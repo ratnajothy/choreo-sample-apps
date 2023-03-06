@@ -7,11 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static("assets"));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(__dirname));
+// app.use(express.static("assets"));
 
 app.get("/web", (req, res) => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
   return res.sendFile(__dirname + "/web.html");
 });
 
