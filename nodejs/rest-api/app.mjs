@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/web", (req, res) => {
+  return res.sendFile('web.html');
+});
+
 app.get("/api/keys/:key", (req, res) => {
   const key = req.params.key;
   if (!key || typeof key !== "string") {
