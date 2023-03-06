@@ -1,12 +1,16 @@
 import express from "express";
 import cache from "./cache.mjs";
+import { dirname } from "path";
+import { fileURLToPath } from 'url';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/web", (req, res) => {
-  return res.sendFile('web.html');
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  return res.sendFile(__dirname + "/web.html");
 });
 
 app.get("/api/keys/:key", (req, res) => {
