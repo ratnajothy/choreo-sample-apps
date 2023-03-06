@@ -10,9 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(__dirname));
-// app.use(express.static("assets"));
 
-app.get("/web", (req, res) => {
+app.get("/", (req, res) => {
   return res.sendFile(__dirname + "/web.html");
 });
 
@@ -24,11 +23,5 @@ app.use((err, _req, res, next) => {
   res.status(500);
   res.json({ error: err.message });
 });
-
-// app.use("*", (_, res) => {
-//   return res
-//     .status(404)
-//     .json({ error: "the requested resource does not exist on this server" });
-// });
 
 export default app;
