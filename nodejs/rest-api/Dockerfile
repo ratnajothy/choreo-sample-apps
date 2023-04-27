@@ -17,6 +17,10 @@ COPY . .
 RUN addgroup -g 10014 choreo && \
     adduser  --disabled-password --uid 10014 --ingroup choreo choreouser
 
+# Set write permissions to the npm log files
+RUN mkdir -p /home/choreouser
+RUN chown -R choreouser:10014 /home/choreouser
+
 # Set a non-root user
 USER 10014
 
