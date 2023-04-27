@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.mjs"
+    "dev": "node index.mjs"
   },
   "author": "",
   "license": "Apache-2.0",
